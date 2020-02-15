@@ -1,0 +1,4 @@
+PyMySQL
+beautifulsoup4
+lxml
+requests
