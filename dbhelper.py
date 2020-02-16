@@ -1,9 +1,9 @@
 import logging
 import traceback
 import pymysql
-from config import db_pass
+from config import *
 
-db = pymysql.connect(db_pass.domain, db_pass.user, db_pass.password, db_pass.db, charset='utf8')
+db = pymysql.connect(DOMAIN, USER, PASSWORD, DB, charset='utf8')
 cursor = db.cursor()
 cursor.execute('SET NAMES utf8;')
 cursor.execute('SET CHARACTER SET utf8;')
