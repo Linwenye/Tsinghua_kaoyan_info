@@ -10,9 +10,12 @@ user = config.mailname
 password = config.mailpass
 
 
-def send_mail(message):
+def send_mail(infos):
+    message = ''
     title = '清华研招网更新'
     recipient = '151250093@smail.nju.edu.cn'
+    for info in infos:
+        message += info[0] + '\n' + info[1] + '\nhref: http://yz.tsinghua.edu.cn/' + info[2] + '\n\n'
     _send_mail(title, message, recipient)
 
 

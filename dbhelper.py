@@ -9,6 +9,7 @@ cursor.execute('SET NAMES utf8;')
 cursor.execute('SET CHARACTER SET utf8;')
 cursor.execute('SET character_set_connection=utf8;')
 
+
 getall_sql = 'select * from kaoyan'
 try:
     cursor.execute(getall_sql)
@@ -21,12 +22,17 @@ except Exception as ec:
 
 def create_table():
     create_sql = '''CREATE TABLE IF NOT EXISTS `kaoyan`(
-   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
-   `runoob_title` VARCHAR(100) NOT NULL,
-   `runoob_author` VARCHAR(40) NOT NULL,
-   `submission_date` DATE,
-   PRIMARY KEY ( `runoob_id` )
+   `info_id` INT UNSIGNED AUTO_INCREMENT,
+   `title` VARCHAR(255) NOT NULL,
+   `tdate` VARCHAR(40) NOT NULL,
+   `href` VARCHAR (255) NOT NULL,
+   PRIMARY KEY ( `info_id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;'''
+    try:
+        cursor.execute(create_sql)
+        db.commit()
+    except:
+        db.rollback()
 
 
 def insert_db(to_insert):
@@ -38,3 +44,7 @@ def insert_db(to_insert):
         except Exception as e:
             db.rollback()
             print(e.args)
+
+
+if __name__ == '__main__':
+    create_table()

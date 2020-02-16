@@ -5,7 +5,7 @@ import logging
 import time
 from bs4 import BeautifulSoup
 from mail import send_mail
-from dbhelper import insert_db,exists
+from dbhelper import insert_db, exists
 
 
 def inner_page_read(myurl, f_log):
@@ -102,5 +102,6 @@ if __name__ == '__main__':
         if item not in exists:
             to_insert.append(item)
     if to_insert:
+        print(to_insert)
         send_mail(to_insert)
         insert_db(to_insert)
