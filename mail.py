@@ -10,15 +10,10 @@ user = config.mailname
 password = config.mailpass
 
 
-def send_mail(title, recipient, course_key, message=None):
-    if message:
-        _send_mail(title, message, recipient)
-        # print_mail(title, message, recipient)
-        changed_courses[course_key] = message
-    else:
-        if course_key in changed_courses:
-            _send_mail(title, changed_courses[course_key], recipient)
-            # print_mail(title, changed_courses[course_key], recipient)
+def send_mail(message):
+    title = '清华研招网更新'
+    recipient = '151250093@smail.nju.edu.cn'
+    _send_mail(title, message, recipient)
 
 
 def _send_mail(title, message, recipient):
